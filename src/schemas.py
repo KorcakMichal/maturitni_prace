@@ -12,10 +12,11 @@ class Kalibrace(BaseModel):
     meridlo: Meridlo
     date: date
     campaign: str = Field(pattern=r"^\d{4}-\d{2}$")  # YYYY-MM
-    inspection_location: str = "on site"
+    inspection_location : str = "on site"
+    inspection_note : str
     supplier: str = "KCZ"
-    conditionTemp: int
-    conditionhum: int = Field(ge=0, le=100)
+    condition_temp: int
+    condition_hum: int = Field(ge=0, le=100)
     v01: float  # TE
     v02: float  # TK
     v03: float = Field(ge=0, le=100)  # HE
