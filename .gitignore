@@ -1,0 +1,6 @@
+.venv/
+__pycache__/
+*.pyc
+# Playwright session (cookies) – nikdy necommitovat
+auth/
+*.storage.json
