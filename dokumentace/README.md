@@ -13,7 +13,7 @@ Práce je rozdělena do 3 částí:
 Ve firmě Performance4 s.r.o se kalibrace digitálních teploměrů a vlhkoměrů (TeHum) zapisuje několikastupňovým ručním procesem přes Microsoft Forms, Power Automate, SharePoint a Excel (viz [analýza](../analyza/Notes.md)). Práce:
 
 1. proces zmapovala (BPMN diagram a přehled entit ve složce [`analyza`](../analyza)),
-2. nahradila ruční vyplňování formuláře desktopovou aplikací v Pythonu: kódy měřidel se načítají čtečkou, naměřené hodnoty se zadají ručně a aplikace je přes UI automatizaci (Playwright) odešle do Microsoft Forms, odkud je dál zpracuje stávající flow.
+2. nahradila ruční vyplňování formuláře desktopovou aplikací v Pythonu: kódy měřidel se načítají čtečkou, naměřené hodnoty se zadají ručně a aplikace je přes UI automatizaci (Playwright) odešle do Microsoft Forms.
 
 ![Měřidla TeHum 02 se štítky s kódem KCZM](img/cidla.jpg)
 

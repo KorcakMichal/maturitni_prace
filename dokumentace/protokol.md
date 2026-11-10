@@ -4,14 +4,12 @@
 ## Zadání
 
 TODO: přepsat na zadání
-Zmapovat stávající proces kalibrace TeHum měřidel a nahradit jeho první část (zadání do Microsoft Forms, přepis flow do SharePoint seznamu `TableAction`, ruční zadání naměřených hodnot) desktopovou aplikací. Čidlo se načítá čtečkou, hodnoty se zadají ručně a vše se přes UI automatizaci odešle do SharePointu. Původní text zadání: [../zadání.mockup.md](../zadání.mockup.md).
-
-Plánované technologie: Python, Playwright (alternativy Selenium / TagUI), Tkinter, SharePoint. Použity byly Python, Playwright, Tkinter a Pydantic.
+Zmapovat stávající proces kalibrace TeHum měřidel. Navrhnout prototyp zlepšení jeho první část (zadání do Microsoft Forms, přepis flow do SharePoint seznamu `TableAction`, ruční zadání naměřených hodnot) desktopovou aplikací.
 
 ## Průběh práce|
 
 1. **Analýza.** do [Prompt](../analyza/Prompt.md), jsem zapsal instrukce pro AI agenta na vytvoření diagramu procesu [BPMN](../analyza/before.bpmn), zároveň jsem tam uvedl seznam odkazů na všechny entity vystupující v procesu. Následně jsem nechal vytvořit a zkontroloval zbylé soubory v /analyza
-2. **Volba přístupu.** Rozhodl jsem se, že bude nejednosuduší vytvořit automatizaci zadávání MS Forms přes UI, protože uživatel stále vidí co počítač dělá.Přihlášení do Microsoft 365 se řeší uloženým stavem prohlížeče (`storage_state`), takže se nemusí ukládat heslo.
+2. **Volba přístupu.** Rozhodl jsem se, že bude nejednosuduší vytvořit automatizaci zadávání MS Forms přes UI, protože uživatel stále vidí co počítač dělá, právě z toho důvodu jsem se rozhodl nepoužívat Graph API. Přihlášení do Microsoft 365 se řeší uloženým stavem prohlížeče (`storage_state`), takže se nemusí ukládat heslo.
 3. **Datový model.** Pravidla pro vstup (formát kódu měřidla, rozsah vlhkosti 0–100 %, formát kampaně `RRRR-MM`) jsou na jednom místě v `schemas.py`; UI je z něj generováno.
 4. **UI.** Okno se společnými údaji, tabulka měřidel, okno pro čtečku (čtečka se chová jako klávesnice a po kódu pošle Tab/Enter). Vytvářel jsem ho pomocí AI agenta, kterému jsem poslal fotku [wireframu](TODO) na papíře. Agent pomocí schemas a wireframu vytvořil jednoduché tkinter UI, které umožňuje validaci zadaných dat proti modelu v `schemas.py`.
 5. **Odeslání.** Pro každé měřidlo se otevře formulář, vyplní se a odešle; chyby se sbírají a zobrazí na konci. TODO: jak se chová, když selže část
@@ -28,14 +26,13 @@ Plánované technologie: Python, Playwright (alternativy Selenium / TagUI), Tkin
 
 ## Proč lze věřit, že práce funguje
 
-- Vstupy se před odesláním validují (kód měřidla, rozsahy, formát kampaně); chybné řádky aplikace vypíše a neodešle nic.
-- Čtečka odmítá neplatné a duplicitní kódy.
-- Úspěšné odeslání se ověřuje: po stisku *Submit* skript čeká na text „Thank you" na stránce, jinak chybu zaznamená.
-- Postup ověření krok za krokem je v [uzivatelska.md](uzivatelska.md#jak-poznám-že-to-funguje).
+Analýza byla již několikrát interně použita ve firmě.
+
+V rámci testování jsem vytvořil na školním SharePointu web a na něm SharePoint list, simulující list TableAction a k němu zadávací formsy, které mají všechna duležitá pole, která jsou ve forms v Performance4
+
 
 ## Známá omezení
 
 - Testy automatické neexistují; ověřování je ruční.
 - Popisky polí ve Forms jsou hledány podle přístupnostních názvů (např. `ItemCode, empty, field editor.`). Změna formuláře nebo jeho jazyka aplikaci rozbije.
-- Aplikace nahrazuje jen vstupní část procesu. Generování a podpis kalibračního listu zůstává v Excelu.
-- Původně se uvažovalo o testování na školním SharePointu; formulář se zadává přes `FORM_URL`, takže lze přepnout na testovací.
+- Aplikace prototypuje jen vstupní část procesu. Generování kalibračního listu zůstává v Excelu.

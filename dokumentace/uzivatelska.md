@@ -2,7 +2,7 @@
 
 ## K čemu aplikace slouží
 
-Zadáte údaje o kalibraci, načtete čtečkou kódy měřidel, doplníte naměřené hodnoty a stisknete **Odeslat**. Aplikace sama otevře prohlížeč a pro každé měřidlo vyplní a odešle Microsoft Forms. Nahrazuje ruční vyplňování formuláře.
+Zadáte údaje o kalibraci, načtete čtečkou kódy měřidel, doplníte naměřené hodnoty a stisknete **Odeslat**. Aplikace sama otevře prohlížeč a pro každé měřidlo vyplní a odešle Microsoft Forms. Nahrazuje ruční vyplňování formuláře, zvyšuje produktivitu a snižuje chybovost při zadávání.
 
 ## Požadavky
 
@@ -14,10 +14,10 @@ Zadáte údaje o kalibraci, načtete čtečkou kódy měřidel, doplníte namě�
 ## Instalace
 
 ```powershell
-git clone <adresa repozitáře>
+git clone https://github.com/KorcakMichal/maturitni_prace.git
 cd maturitni_prace
 uv sync
-uv run playwright install chromium
+uv run playwright install chromium TODO: je to potřeba
 ```
 
 ### Konfigurace
@@ -25,11 +25,11 @@ uv run playwright install chromium
 Zkopírujte `.env.example` na `.env` a upravte:
 
 ```
-FORM_URL=https://<tenant>.sharepoint.com/:l:/s/<site>/<id>?nav=<nav>
+FORM_URL=https://gymjs.sharepoint.com/:l:/s/MaturitnprceMK/JADu45yM7DL5T7lG9_uoAoVXAbfrg6-vmHY70uk7M30Xq44?nav=YmQ1ZTNhZTgtZWM4My00OTY2LTk5M2UtNWU1ZjYyYTQzNGM4
 STORAGE_STATE=auth/skola.storage.json
 ```
 
-- `FORM_URL` – odkaz na formulář, do kterého se odesílá.
+- `FORM_URL` – odkaz na formulář, do kterého se odesílá. Ve vzoru je odkaz na testovací formulář na školním SharePointu 
 - `STORAGE_STATE` – soubor s uloženým přihlášením (cookies). Není v gitu.
 
 ### Jednorázové přihlášení
@@ -99,7 +99,7 @@ V tabulce přeskakuje **Enter** na další pole a na konci řádku na nový řá
 
 1. Po stisku **Odeslat** s chybným vstupem (např. kód `ABC`, vlhkost 150) se zobrazí okno **Chyba** s popisem řádku a pole. Nic se neodešle.
 2. Se správným vstupem se otevře prohlížeč, formulář se sám vyplní a odešle a zobrazí se hláška **Hotovo**.
-3. Záznam se objeví v SharePoint seznamu `TableAction` (vytvoří ho stávající Power Automate flow z odpovědí Forms).
+3. Záznam se objeví v SharePoint seznamu `TableAction` (vznikne z odeslané odpovědi ve Forms).
 
 ## Řešení problémů
 

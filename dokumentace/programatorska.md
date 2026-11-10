@@ -2,16 +2,12 @@
 
 ## Přehled architektury
 
-```
-main.py ──► screen.py ──► schemas.py
-   │         (Tkinter UI)   (Pydantic modely)
-   └──────► forms.py ─────► schemas.py
-            (Playwright)
-```
+![Architektura aplikace](img/architektura.svg)
 
-Tok dat: UI → text z políček → `sestavit()` → ověřené objekty `Kalibrace` → `odeslat()` → Microsoft Forms → (stávající flow) → SharePoint `TableAction`.
+*Modré boxy jsou moduly aplikace, zelený je sdílený datový model, šedé jsou externí systémy. Zelené čárkované šipky značí import `schemas.py`, fialová čárkovaná šipka konfiguraci načítanou při spuštění prohlížeče.*
 
-Širší kontext procesu: [BPMN před](img/proces-before.svg) a [entity](img/entity.svg), podrobně v [analyza/](../analyza).
+
+Širší kontext procesu: [proces-before BPMN](img/proces-before.svg) a [entity](img/entity.svg), podrobně v [analyza/](../analyza).
 
 ## Technologie
 
@@ -39,7 +35,6 @@ Jediný zdroj pravdy o polích a pravidlech. Zbytek kódu z něj vychází.
   - `nacist_ctekou` – modální okno pro čtečku,
   - `odeslat` – sestaví a zvaliduje, při chybě ukáže `messagebox`, jinak zavře UI.
 
-**Neobvyklé rozhodnutí – čtečka jako klávesnice.** Čtečka za kódem posílá Tab (některé Enter). Okno čtečky proto váže obě klávesy na `prijmout` a vrací `"break"`, aby Tab nepřeskočil fokus. Čtečka tak nepotřebuje žádný ovladač.
 
 ### `forms.py` – odeslání do Forms
 
