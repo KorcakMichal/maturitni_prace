@@ -1,0 +1,103 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 620" width="1440" height="620" font-family="Segoe UI, Arial, sans-serif">
+  <defs>
+    <marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#475569"/>
+    </marker>
+    <style>
+      .t { font-size: 15px; font-weight: 600; fill: #0f172a; text-anchor: middle; }
+      .s { font-size: 11.5px; fill: #334155; text-anchor: middle; }
+      .h { font-size: 13px; font-weight: 600; fill: #475569; }
+      .n { font-size: 12.5px; fill: #334155; }
+      .l { font-size: 11px; fill: #475569; text-anchor: middle; font-style: italic; }
+      .role { fill: #fde7c8; stroke: #d97706; stroke-width: 1.5; }
+      .tool { fill: #dbeafe; stroke: #2563eb; stroke-width: 1.5; }
+      .data { fill: #d9f2e0; stroke: #16a34a; stroke-width: 1.5; }
+      .doc  { fill: #ece4fb; stroke: #7c3aed; stroke-width: 1.5; }
+      .edge { stroke: #475569; stroke-width: 1.8; fill: none; marker-end: url(#arr); }
+      .bus  { stroke: #475569; stroke-width: 1.8; fill: none; }
+    </style>
+  </defs>
+
+  <rect width="1440" height="620" fill="#ffffff"/>
+  <text x="30" y="30" style="font-size:20px;font-weight:700;fill:#0f172a">Entity v procesu kalibrace TeHum měřidel</text>
+
+  <!-- SharePoint group -->
+  <rect x="640" y="48" width="260" height="342" rx="10" fill="#f6fbf7" stroke="#16a34a" stroke-dasharray="6 4"/>
+  <text x="656" y="68" class="h">SharePoint · sites/infrastructure</text>
+
+  <!-- Row 1 -->
+  <rect class="role" x="30" y="90" width="150" height="56" rx="8"/>
+  <text class="t" x="105" y="114">Kalibrátor</text><text class="s" x="105" y="132">uživatel</text>
+
+  <rect class="tool" x="230" y="90" width="150" height="56" rx="8"/>
+  <text class="t" x="305" y="114">Microsoft Forms</text><text class="s" x="305" y="132">kdy a kdo kalibroval</text>
+
+  <rect class="tool" x="430" y="90" width="150" height="56" rx="8"/>
+  <text class="t" x="505" y="114">Power Automate</text><text class="s" x="505" y="132">flow</text>
+
+  <path class="edge" d="M180,118 H230"/>
+  <path class="edge" d="M380,118 H430"/>
+  <path class="edge" d="M580,118 H660"/>
+  <text class="l" x="620" y="108">zápis</text>
+
+  <!-- SharePoint lists -->
+  <rect class="data" x="660" y="90" width="220" height="56" rx="8"/>
+  <text class="t" x="770" y="114">TableAction</text><text class="s" x="770" y="132">provedené kalibrace + naměřené hodnoty</text>
+
+  <rect class="data" x="660" y="168" width="220" height="56" rx="8"/>
+  <text class="t" x="770" y="192">TableInfra</text><text class="s" x="770" y="210">přístroje / měřidla (KCZM…)</text>
+
+  <rect class="data" x="660" y="246" width="220" height="56" rx="8"/>
+  <text class="t" x="770" y="270">ListAssessment</text><text class="s" x="770" y="288">podklady pro vyhodnocení</text>
+
+  <rect class="data" x="660" y="324" width="220" height="56" rx="8"/>
+  <text class="t" x="770" y="348">ListCompanyInfra</text><text class="s" x="770" y="366">firmy / zákazníci</text>
+
+  <!-- bus to Excel -->
+  <path class="bus" d="M880,118 H920 M880,196 H920 M880,274 H920 M880,352 H920 M920,118 V352"/>
+  <path class="edge" d="M920,235 H960"/>
+
+  <!-- Excel -->
+  <rect class="tool" x="960" y="190" width="220" height="90" rx="8"/>
+  <text class="t" x="1070" y="218">Excel pro TeHum</text>
+  <text class="s" x="1070" y="238">Power Query načte 4 seznamy</text>
+  <text class="s" x="1070" y="256">výběr etalonu a ID z TableAction</text>
+
+  <rect class="doc" x="1230" y="207" width="180" height="56" rx="8"/>
+  <text class="t" x="1320" y="231">registrKL</text><text class="s" x="1320" y="249">archiv Excelu (SharePoint)</text>
+  <path class="edge" d="M1180,235 H1230"/>
+
+  <!-- vertical flow -->
+  <rect class="doc" x="960" y="330" width="220" height="56" rx="8"/>
+  <text class="t" x="1070" y="354">Kalibrační list</text><text class="s" x="1070" y="372">list v Excelu, počítá se sám</text>
+  <path class="edge" d="M1070,280 V330"/>
+
+  <rect class="doc" x="960" y="440" width="220" height="56" rx="8"/>
+  <text class="t" x="1070" y="464">PDF</text><text class="s" x="1070" y="482">export Kalibračního listu</text>
+  <path class="edge" d="M1070,386 V440"/>
+
+  <rect class="doc" x="700" y="440" width="200" height="56" rx="8"/>
+  <text class="t" x="800" y="464">copy03</text><text class="s" x="800" y="482">složka na OneDrive P. Korčáka</text>
+  <path class="edge" d="M960,468 H900"/>
+
+  <rect class="role" x="440" y="440" width="200" height="56" rx="8"/>
+  <text class="t" x="540" y="464">Pavel Korčák</text><text class="s" x="540" y="482">kontrola, podpis, tisk, archiv</text>
+  <path class="edge" d="M700,468 H640"/>
+
+  <rect class="role" x="180" y="440" width="200" height="56" rx="8"/>
+  <text class="t" x="280" y="464">Zákazník</text><text class="s" x="280" y="482">dostane vytištěný list</text>
+  <path class="edge" d="M440,468 H380"/>
+
+  <!-- notes -->
+  <text class="n" x="30" y="190">Kalibrátor také:</text>
+  <text class="n" x="30" y="210">• ručně zadá naměřené hodnoty do TableAction</text>
+  <text class="n" x="30" y="230">• v Excelu aktualizuje data a vybere etalon</text>
+  <text class="n" x="30" y="250">• exportuje PDF a nahraje ho do copy03</text>
+
+  <!-- legend -->
+  <text class="h" x="30" y="560">Legenda:</text>
+  <rect class="role" x="110" y="546" width="22" height="18" rx="4"/><text class="n" x="140" y="560">role (osoba)</text>
+  <rect class="tool" x="250" y="546" width="22" height="18" rx="4"/><text class="n" x="280" y="560">nástroj / automatizace</text>
+  <rect class="data" x="450" y="546" width="22" height="18" rx="4"/><text class="n" x="480" y="560">datový zdroj (SharePoint seznam)</text>
+  <rect class="doc" x="710" y="546" width="22" height="18" rx="4"/><text class="n" x="740" y="560">dokument / úložiště výstupů</text>
+</svg>

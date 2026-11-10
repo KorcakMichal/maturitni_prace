@@ -5,6 +5,5 @@ requires-python = ">=3.14"
 dependencies = [
     "playwright",
     "pydantic>=2.14.2",
-    "pydantic-panel>=0.2.0",
     "python-dotenv>=1.2.4",
 ]
