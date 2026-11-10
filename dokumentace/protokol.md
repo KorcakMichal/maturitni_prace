@@ -3,8 +3,7 @@
 
 ## Zadání
 
-TODO: přepsat na zadání
-Zmapovat stávající proces kalibrace TeHum měřidel. Navrhnout prototyp zlepšení jeho první část (zadání do Microsoft Forms, přepis flow do SharePoint seznamu `TableAction`, ruční zadání naměřených hodnot) desktopovou aplikací.
+Zmapovat stávající proces kalibrace TeHum měřidel ve firmě Performance4. Navrhnout prototyp zlepšení jeho první část (zadání do Microsoft Forms, přepis flow do SharePoint seznamu `TableAction`, ruční zadání naměřených hodnot) python aplikací.
 
 ## Průběh práce|
 
@@ -16,7 +15,7 @@ Zmapovat stávající proces kalibrace TeHum měřidel. Navrhnout prototyp zlep�
    ![Wireframe oken Kalibrace a Měřidla](img/wireframe.jpg)
 
    *Ručně kreslený wireframe: vlevo okno „Kalibrace" (společné údaje), vpravo okno „Měřidla" (tabulka se sloupci IDI, TE, TK, HE, HK).*
-5. **Odeslání.** Pro každé měřidlo se otevře formulář, vyplní se a odešle; chyby se sbírají a zobrazí na konci. TODO: jak se chová, když selže část
+5. **Odeslání.** Pro každé měřidlo se otevře formulář, vyplní se a odešle; chyby se sbírají a zobrazí na konci.
 
 ## Co je vlastní práce a co ne
 

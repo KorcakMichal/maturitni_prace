@@ -17,7 +17,7 @@ Zadáte údaje o kalibraci, načtete čtečkou kódy měřidel, doplníte namě�
 git clone https://github.com/KorcakMichal/maturitni_prace.git
 cd maturitni_prace
 uv sync
-uv run playwright install chromium TODO: je to potřeba
+uv run playwright install chromium
 ```
 
 ### Konfigurace
