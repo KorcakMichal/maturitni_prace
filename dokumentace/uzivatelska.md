@@ -54,6 +54,8 @@ Otevřou se dvě okna.
 
 ### Okno „Kalibrace" – společné údaje
 
+![Okno Kalibrace](img/okno-kalibrace.png)
+
 | Pole | Význam | Výchozí |
 |---|---|---|
 | `id` | Označení kalibrace | – |
@@ -68,6 +70,8 @@ Otevřou se dvě okna.
 Desetinná čísla lze psát s čárkou i tečkou.
 
 ### Okno „Měřidla" – tabulka
+
+![Okno Měřidla](img/okno-meridla.png)
 
 Jeden řádek = jedno měřidlo.
 
@@ -85,6 +89,22 @@ Tlačítka:
 - **Odeslat** – zvaliduje data a odešle je.
 
 V tabulce přeskakuje **Enter** na další pole a na konci řádku na nový řádek. Prázdné řádky se ignorují.
+
+### Okno „Čtečka"
+
+![Okno Čtečka](img/okno-ctecka.png)
+
+Otevře se tlačítkem **Načíst čtečkou**. Slouží k rychlému zadání kódů měřidel bez ručního psaní: čtečka se chová jako klávesnice, takže stačí mít kurzor v poli (je tam automaticky) a skenovat štítky jeden po druhém.
+
+Co okno umí:
+- **Automaticky zpracuje každý kód.** Čtečka za kódem pošle Tab (nebo Enter), okno kód přijme, pole vyprázdní a kurzor v něm zůstane připravený na další štítek.
+- **Zapisuje do tabulky.** Platný kód se vloží do sloupce `idi` prvního řádku, který ještě nemá kód. Když žádný volný řádek není, přidá se nový.
+- **Kontroluje kód.** Přijme jen tvar `KCZM` + 5 číslic. Při neplatném kódu zobrazí červené „Neplatný kód: …" a pípne.
+- **Hlídá duplicity.** Kód, který už byl v tomto okně načten, zobrazí červeně jako „Už načteno: …", pípne a do tabulky ho znovu nezapíše.
+- **Potvrzuje úspěch.** Správně načtený kód zobrazí zeleně jako „OK: …" a přidá ho do seznamu načtených kódů pod polem (na obrázku je vidět i hláška o duplicitě).
+- **Je modální.** Dokud ho nezavřete tlačítkem **Hotovo**, nelze pracovat v ostatních oknech, takže se kódy nezapíší omylem jinam.
+
+Naměřené hodnoty (`v01`–`v04`) se doplňují ručně v tabulce až po načtení kódů.
 
 ### Typický postup
 
